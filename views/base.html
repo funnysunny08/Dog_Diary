@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="/">내개니개</a>
+      </div>
+      <div class="nav-right">
+        
+        <a href="/yourdog">니 개</a>
+        {% if user and user.id %}
+        <a href="/mydog">내 개</a>
+        <a href="/mypage">마이페이지</a>
+        <a href="/auth/logout">로그아웃</a>
+        {% else %}
+        <a href="/login">로그인</a>
+        
+        {% endif %}
+      </div>
+    </nav>
+    <main>
+      <div class="container">{% block content %} {% endblock %}</div>
+    </main>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      window.onload = () => {
+        if (new URL(location.href).searchParams.get('loginError')) {
+          alert(new URL(location.href).searchParams.get('loginError'));
+        }
+      };
+    </script>
+    {% block script %}
+    {% endblock %}
+  </body>
+</html>

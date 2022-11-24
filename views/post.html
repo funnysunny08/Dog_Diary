@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+{% if user %}
+<div class="post-diary">
+    <div>
+        <form id="diary-form" action="/post" method="post" enctype="multipart/form-data">
+          <input id="diary-tdy" type="date" name="date">
+          <input id="diary-title" type="text" maxlength="100" name="title">
+          <div class="input-group">
+
+            <textarea id="diary-content" name="content" maxlength="140"></textarea>
+          </div>
+          <div class="img-preview">
+            <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+            <input id="img-url" type="hidden" name="url">
+          </div>
+          <div>
+            <label id="img-label" for="img">사진 업로드</label>
+            <input id="img" type="file" accept="image/*">
+            <button id="post-btn" type="submit" class="btn">작성</button>
+          </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %} {% block script %}
+
+{% endblock %} {% block title %} 글쓰기 {% endblock %}

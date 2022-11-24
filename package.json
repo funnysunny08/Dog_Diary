@@ -1,0 +1,28 @@
+{
+  "name": "dog_diary",
+  "version": "1.0.0",
+  "description": "반려견 다이어리",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "Sunny",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "chokidar": "^3.5.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^2.3.3",
+    "nunjucks": "^3.2.3",
+    "passport": "^0.5.3",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.25.6",
+    "sequelize-cli": "^6.5.2"
+  }
+}
