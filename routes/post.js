@@ -62,4 +62,20 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   }
 });
 
+//* 글 삭제
+router.delete('/:postId', isLoggedIn, async (req, res, next) => {
+  const { postId } = req.params;
+  try {
+    await Post.delete({
+      where: {
+        id: postId
+      }
+    });
+    res.status(200).send("삭제 성공").redirect('/');
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 module.exports = router;
