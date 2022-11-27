@@ -61,4 +61,9 @@ router.get('/yourdog', async (req, res) => {
   }    
 });
 
+//* 글 작성 페이지로 이동
+router.get('/post', async (req, res) => {
+  res.render('post', { title: '글 작성' });
+});
+
 module.exports = router;
