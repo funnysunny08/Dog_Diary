@@ -25,7 +25,7 @@ const upload = multer({
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
   }),
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 6 * 1024 * 1024 },
 });
 
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
@@ -36,10 +36,7 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   try {
-    console.log(req.user);
-    console.log(req.body.url);
     const post = await Post.create({
-      
       content: req.body.content,
       img: req.body.url,
       UserId: req.user.id,
@@ -62,6 +59,18 @@ router.delete('/:postId', isLoggedIn, async (req, res, next) => {
       }
     });
     res.status(200).send("삭제 성공").redirect('/');
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+//* 글 조회
+router.get('/:postId', async (req, res, next) => {
+  const { postId } = req.params;
+  try {
+    post = await Post.findByPk(postId);
+    res.render('readPost', { title: '니개', post: post });
   } catch (error) {
     console.error(error);
     next(error);

@@ -11,10 +11,9 @@
         <div class="home-bottom-friend">
             {% for post in posts %}
             <div class="home-bottom-diaries">
-                <div class="home-bottom-diaries-title">{{post.title}}</div>
-                <div class="home-bottom-diaries-dogName">{{post.User.dogName}}</div>
+                <div class="home-bottom-diaries-dogName">{{post.User.dogname}}의 일기</div>
+                <div class="home-bottom-diaries-title"><a href="/post/{{post.id}}">{{post.title}}</a></div>
                 <img src="{{post.img}}" alt="asd">
-                <p>{{post.img}} df</p>
             </div>
             {% endfor %}
         </div>

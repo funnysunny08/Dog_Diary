@@ -17,8 +17,30 @@
     font-family: 'Yeon Sung', cursive;
 }
 
+* {
+    font-family: 'Yeon Sung', cursive;
+}
 
 .home-bottom {
     border: solid;
 
+}
+
+.home-bottom-friend {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 4rem 0 4rem;
+}
+
+.home-bottom-diaries {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 0 auto 0 auto;
+}
+
+.home-bottom-diaries img {
+    width: 200px;
 }

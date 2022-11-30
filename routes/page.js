@@ -32,8 +32,9 @@ router.get('/', async (req, res, next) => {
     const posts = await Post.findAll({
       include: {
         model: User,
-        attributes: ['id', 'nick', 'dogName'],
+        attributes: ['id', 'nick', 'dogname'],
       },
+      order: [['createdAt', 'DESC']],
     });
 
     res.render('main', {title: '홈화면', posts});
