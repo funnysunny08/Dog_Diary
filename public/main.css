@@ -17,15 +17,11 @@
     font-family: 'Yeon Sung', cursive;
 }
 
-* {
-    font-family: 'Yeon Sung', cursive;
+.home-bottom p {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 1rem 0 0 1rem;
 }
-
-.home-bottom {
-    border: solid;
-
-}
-
 .home-bottom-friend {
     display: flex;
     flex-direction: row;
@@ -34,13 +30,21 @@
 }
 
 .home-bottom-diaries {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
     padding: 0 auto 0 auto;
+    margin-top: 12px;
 }
 
 .home-bottom-diaries img {
     width: 200px;
+}
+
+.home-bottom-diaries-dogName {
+    font-weight: bold;
+    font-size: 23px;
+    padding: 3px;
+}
+.home-bottom-diaries-title {
+    font-weight: bold;
+    font-size: 17px;
+    padding: 1rem 0;
 }

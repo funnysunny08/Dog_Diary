@@ -16,6 +16,9 @@
     ></script>
     <link rel="stylesheet" href="/base.css">
     <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/yourdog.css">
+    <link rel="stylesheet" href="/readPost.css">
+    <link rel="stylesheet" href="/login.css">
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
@@ -27,9 +30,8 @@
         
         <a href="/yourdog"><i class="fa-solid fa-dog"></i>니 개</i></a>
         {% if user and user.id %}
-        <a href="/mydog"><i class="fa-solid fa-dog"></i>내 개</a>
+        <a href="/mydog/{{user.id}}"><i class="fa-solid fa-dog"></i>내 개</a>
         <a href="/auth/logout">로그아웃</a>
-        <a href="/mypage">마이페이지</a>
         {% else %}
         <a href="/login">로그인</a>
         

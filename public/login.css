@@ -1,0 +1,95 @@
+.login-body {
+    background-color: lightyellow;
+    height: 650px;
+    text-align: center;
+    padding: 10rem 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#login-join .input-group {
+    padding: 1rem 0;
+}
+
+#join {
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+}
+
+#login {
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+}
+
+/* 회원가입 */
+.join-body {
+    background-color: lightyellow;
+    height: 360px;
+    text-align: center;
+    padding: 10rem 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#join-form .input-group {
+    padding: 10px 0;
+}
+
+#join-btn {
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+}
+
+/* 글 작성 */
+.post-body, .update-body {
+    background-color: lightyellow;
+    height: 1300px;
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.post-body .input-group, .update-body .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px;
+}
+.post-body .input-group input, .update-body .input-group input {
+    width: 40rem;
+    height: 30px;
+}
+.post-body .input-group textarea, .update-body .input-group textarea {
+    width: 40rem;
+    height: 400px;
+}
+
+.post-body .input-group label, .update-body .input-group label {
+    padding-bottom: 20px;
+}
+
+.post-body button ,.update-body button {
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+}

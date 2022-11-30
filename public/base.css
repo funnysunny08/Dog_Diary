@@ -22,6 +22,9 @@ nav a {
     font-weight: bold;
     color: black;
 }
+* {
+    font-family: 'Gamja Flower', cursive;
+}
 
 nav .nav-left a {
     font-size: 30px;

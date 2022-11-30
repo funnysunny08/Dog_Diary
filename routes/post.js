@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const { Post } = require('../models');
 const { isLoggedIn } = require('./middlewares');
+const { where } = require('sequelize');
 
 const router = express.Router();
 
@@ -42,7 +43,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       UserId: req.user.id,
       title: req.body.title,
     });
-    res.redirect('/');
+    res.redirect('/:postId');
   } catch (error) {
     console.error(error);
     next(error);
@@ -50,27 +51,46 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
 });
 
 //* 글 삭제
-router.delete('/:postId', isLoggedIn, async (req, res, next) => {
+router.get('/delete/:postId', isLoggedIn, async (req, res, next) => {
   const { postId } = req.params;
   try {
-    await Post.delete({
+    await Post.destroy({
       where: {
         id: postId
       }
     });
-    res.status(200).send("삭제 성공").redirect('/');
+    res.redirect('/');
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
 
+//* 글 수정
+router.get('/update/:postId', isLoggedIn, async (req, res, next) => {
+  const { postId } = req.params;
+  try {
+    const post = await Post.findByPk(postId);
+    res.render('update', { title: '글 수정', post });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  } 
+});
+
+
 //* 글 조회
 router.get('/:postId', async (req, res, next) => {
   const { postId } = req.params;
   try {
     post = await Post.findByPk(postId);
-    res.render('readPost', { title: '니개', post: post });
+    var chk = false;
+    if (req.user) {
+      if (req.user.id == post.UserId) {
+        chk = true;
+      }
+    }
+    res.render('readPost', { title: '니개', post, chk });
   } catch (error) {
     console.error(error);
     next(error);
