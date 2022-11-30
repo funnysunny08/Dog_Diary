@@ -4,20 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/dc378a50f1.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/base.css">
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
     <nav>
       <div class="nav-left">
-        <a href="/">내개니개</a>
+        <a href="/">내개니개<i class="fa-solid fa-paw"></i></a>
       </div>
       <div class="nav-right">
         
-        <a href="/yourdog">니 개</a>
+        <a href="/yourdog"><i class="fa-solid fa-dog"></i>니 개</i></a>
         {% if user and user.id %}
-        <a href="/mydog">내 개</a>
-        <a href="/mypage">마이페이지</a>
+        <a href="/mydog"><i class="fa-solid fa-dog"></i>내 개</a>
         <a href="/auth/logout">로그아웃</a>
+        <a href="/mypage">마이페이지</a>
         {% else %}
         <a href="/login">로그인</a>
         
