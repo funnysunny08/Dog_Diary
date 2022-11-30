@@ -1,3 +1,24 @@
 {% extends 'base.html' %} {% block content %}
 
-{% endblock %} {% block title %} 홈화면 {% endblock %}
+<div class="home-body"></div>
+    <div class="home-middle">
+        <p>내 개</p>
+        <i id="home-middle-icon" class="fa-solid fa-paw"></i>
+        <p>니 개</p>
+    </div>
+    <div class="home-bottom">
+        <p>개 친구들</p>
+        <div class="home-bottom-friend">
+            {% for post in posts %}
+            <div class="home-bottom-diaries">
+                <div class="home-bottom-diaries-title">{{post.title}}</div>
+                <div class="home-bottom-diaries-dogName">{{post.User.dogName}}</div>
+                <img src="{{post.img}}" alt="asd">
+                <p>{{post.img}} df</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block title %} 내개니개 {% endblock %}

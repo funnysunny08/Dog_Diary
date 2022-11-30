@@ -28,10 +28,20 @@ router.get('/join', isNotLoggedIn, (req, res) => {
 
 //* 홈화면
 router.get('/', async (req, res, next) => {
-  const twits = [];
-  res.render('main', {
-    title: '홈화면',
-  });
+  try {
+    const posts = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ['id', 'nick', 'dogName'],
+      },
+    });
+
+    res.render('main', {title: '홈화면', posts});
+
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 //* 마이페이지

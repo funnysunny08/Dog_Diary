@@ -4,8 +4,6 @@
 
 
 nav {
-    border: solid;
-    width: 98%;
     height: 4rem;
     display: flex;
     flex-direction: row;
