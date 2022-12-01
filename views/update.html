@@ -3,7 +3,7 @@
 {% if user %}
 <div class="update-body">
     <div>
-        <form id="update-form" action="/update" method="update" enctype="multipart/form-data">
+        <form id="update-form" action="/post/update/{{post.id}}" method="post" enctype="multipart/form-data">
           
           <div class="input-group">
             <label for="post-title">제목</label>

@@ -43,7 +43,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       UserId: req.user.id,
       title: req.body.title,
     });
-    res.redirect('/:postId');
+    res.redirect(`/post/${post.id}`);
   } catch (error) {
     console.error(error);
     next(error);
@@ -76,6 +76,25 @@ router.get('/update/:postId', isLoggedIn, async (req, res, next) => {
     console.error(error);
     next(error);
   } 
+});
+//* post- 글 수정
+router.post('/update/:postId', isLoggedIn, upload2.none(), async (req, res, next) => {
+  const { postId } = req.params;
+  const post = await Post.findByPk(postId);
+  try {
+    const data = await Post.update({
+      content: req.body.content,
+      img: req.body.url,
+      UserId: req.user.id,
+      title: req.body.title,
+      createdAt: post.createdAt }, {
+        where: {id: postId}
+    });
+    res.redirect(`/post/${post.id}`);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 
