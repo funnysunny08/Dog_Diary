@@ -1,0 +1,46 @@
+.read-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.read-body img {
+    width: 400px;
+}
+
+.date-box {
+    font-weight: bold;
+    font-size: 23px;
+    margin: 30px;
+}
+
+.title-box {
+    font-weight: bold;
+    font-size: 30px;
+    margin: 30px;
+}
+
+.content-box {
+    font-size: 22px;
+    border: solid lightgray 3px;
+    border-radius: 12px;
+    width: 40rem;
+    padding: 12px;
+}
+
+.read-btns {
+    display: flex;
+    flex-direction: row;
+    margin: 60px;
+}
+
+.read-btns a {
+    border: solid 3px black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+}

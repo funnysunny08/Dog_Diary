@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="read-body2">
+    <div class="date-box">{{post.createdAt}}</div>
+    <div class="read-body">
+        {% if post.img %}
+        <img src="{{post.img}}" alt="">
+        {% endif %}
+        <div class="title-box">제목 : {{post.title}}</div>
+        <div class="content-box">{{post.content}}</div>
+        {% if chk %}
+        <div class="read-btns">
+            <div class="update-btn"><a href="/post/update/{{post.id}}">일기 수정</a></div>
+            <div class="delete-btn"><a href="/post/delete/{{post.id}}">일기 삭제</a></div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %} {% block title %} post.title {% endblock %}

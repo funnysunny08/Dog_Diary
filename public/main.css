@@ -1,0 +1,50 @@
+.home-middle {
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8rem 0 8rem;
+    background-color: #FFEEB3;
+}
+
+#home-middle-icon {
+    font-size: 200px;
+}
+
+.home-middle p {
+    font-size: 70px;
+    font-family: 'Yeon Sung', cursive;
+}
+
+.home-bottom p {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 1rem 0 0 1rem;
+}
+.home-bottom-friend {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 4rem 0 4rem;
+}
+
+.home-bottom-diaries {
+    padding: 0 auto 0 auto;
+    margin-top: 12px;
+}
+
+.home-bottom-diaries img {
+    width: 200px;
+}
+
+.home-bottom-diaries-dogName {
+    font-weight: bold;
+    font-size: 23px;
+    padding: 3px;
+}
+.home-bottom-diaries-title {
+    font-weight: bold;
+    font-size: 17px;
+    padding: 1rem 0;
+}

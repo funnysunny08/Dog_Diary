@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+
+{% if user %}
+<div class="update-body">
+    <div>
+        <form id="update-form" action="/update" method="update" enctype="multipart/form-data">
+          
+          <div class="input-group">
+            <label for="post-title">제목</label>
+            <input id="update-title" type="text" maxlength="100" name="title" value="{{post.title}}">
+          </div>
+          <div class="input-group">
+            <label for="post-content">일기를 써보세요!</label>
+            <textarea id="update-content" name="content" maxlength="140">{{post.content}}</textarea>
+          </div>
+          <div class="img-preview">
+            <img id="img-preview" src="{{post.img}}"  width="250" alt="미리보기">
+            <input id="img-url" type="hidden" name="url" value="{{post.img}}">
+          </div>
+          <div>
+            <label id="img-label" for="img">사진 업로드</label>
+            <input id="img" type="file" accept="image/*" value="{{post.img}}" >
+          </div>
+          <button id="post-btn" type="submit" class="btn">수정</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %} {% block script %}
+
+<script>
+  if (document.getElementById('img')) {
+      document.getElementById('img').addEventListener('change', function (e) {
+          const formData = new FormData();
+          console.log(this, this.files);
+          formData.append('img', this.files[0]);
+          axios.post('/post/img', formData)
+              .then((res) => {
+                  document.getElementById('img-url').value = res.data.url;
+                  document.getElementById('img-preview').src = res.data.url;
+                  document.getElementById('img-preview').style.display = 'inline';
+              })
+              .catch((err) => {
+                  console.error(err);
+              });
+      });
+  }
+</script>
+{% endblock %} {% block title %} 글 수정 {% endblock %}

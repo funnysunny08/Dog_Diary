@@ -1,9 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 
-<div id="mydog-go-post">
-    <a href="/post">글 작성하기</a>
+<div class="mydog-body">
+  <div class="mydog-diaries">
+    {% for post in posts %}
+    <div class="diary">
+      <div class="diary-left">
+        <img src="{{post.img}}" alt="" />
+      </div>
+      <div class="diary-right">
+        <div class="diary-time">{{post.createdAt}}</div>
+        <div class="diary-content">
+          제목 : <a href="/post/{{post.id}}">{{post.title}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div id="mydog-go-post">
+    {% if chk %}
+    <a href="/post"><i class="fa-solid fa-bone"></i> 일기쓰기 <i class="fa-solid fa-bone"></i></a>
+    {% endif %}
+  </div>
 </div>
-
-
-
 {% endblock %} {% block title %} 내 개 {% endblock %}

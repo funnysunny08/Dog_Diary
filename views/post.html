@@ -1,13 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
 {% if user %}
-<div class="post-diary">
+<div class="post-body">
     <div>
         <form id="diary-form" action="/post" method="post" enctype="multipart/form-data">
           
-          <input id="diary-title" type="text" maxlength="100" name="title">
           <div class="input-group">
-            
+            <label for="post-title">제목</label>
+            <input id="diary-title" type="text" maxlength="100" name="title">
+          </div>
+          <div class="input-group">
+            <label for="post-content">일기를 써보세요!</label>
             <textarea id="diary-content" name="content" maxlength="140"></textarea>
           </div>
           <div class="img-preview">
@@ -17,8 +20,8 @@
           <div>
             <label id="img-label" for="img">사진 업로드</label>
             <input id="img" type="file" accept="image/*">
-            <button id="post-btn" type="submit" class="btn">작성</button>
           </div>
+          <button id="post-btn" type="submit" class="btn">작성</button>
         </form>
     </div>
 </div>
@@ -26,4 +29,22 @@
 
 {% endblock %} {% block script %}
 
+<script>
+  if (document.getElementById('img')) {
+      document.getElementById('img').addEventListener('change', function (e) {
+          const formData = new FormData();
+          console.log(this, this.files);
+          formData.append('img', this.files[0]);
+          axios.post('/post/img', formData)
+              .then((res) => {
+                  document.getElementById('img-url').value = res.data.url;
+                  document.getElementById('img-preview').src = res.data.url;
+                  document.getElementById('img-preview').style.display = 'inline';
+              })
+              .catch((err) => {
+                  console.error(err);
+              });
+      });
+  }
+</script>
 {% endblock %} {% block title %} 글쓰기 {% endblock %}

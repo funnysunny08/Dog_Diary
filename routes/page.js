@@ -28,10 +28,24 @@ router.get('/join', isNotLoggedIn, (req, res) => {
 
 //* 홈화면
 router.get('/', async (req, res, next) => {
-  const twits = [];
-  res.render('main', {
-    title: '홈화면',
-  });
+  try {
+    const posts = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ['id', 'nick', 'dogname'],
+      },
+      order: [['createdAt', 'DESC']],
+    });
+    const post1 = posts[0];
+    const post2 = posts[1];
+    const post3 = posts[2];
+
+    res.render('main', {title: '홈화면', post1, post2, post3});
+
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 //* 마이페이지
@@ -40,21 +54,43 @@ router.get('/mypage', isLoggedIn, async (req, res) => {
 });
 
 //* 내개
-router.get('/mydog', async (req, res) => {
-    res.render('mydog', { title: '내개' });
+router.get('/mydog/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try{
+      const posts = await Post.findAll({
+        where:{
+          UserId: userId,
+        },
+        include: {
+          model: User
+        }
+      });
+      var chk = false;
+      if (req.user) {
+        if (userId == req.user.id) {
+          chk = true;
+        }
+      }
+      
+      res.render('mydog', { title: '내 개', posts, chk });
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
 });
 
 //* 니개
 router.get('/yourdog', async (req, res) => {
   try {
-    const posts = await Post.findAll({
+    const dogs = await User.findAll({
       include: {
-        model: User,
-        attributes: ['id', 'nick'],
-      },
-      order: [['createdAt', 'DESC']],
+        model: Post,
+        attributes: ['img'],
+      }
     });
-    res.render('yourdog', { title: '니개', posts: posts });
+
+
+    res.render('yourdog', { title: '니개', dogs });
   } catch (err) {
     console.error(err);
     next(err);

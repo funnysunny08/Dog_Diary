@@ -1,0 +1,36 @@
+/* base.html */
+/* rem 쓰기 */
+@import url("./reset.css");
+
+
+nav {
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #F7CF46;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav a {
+    font-family: 'Gamja Flower', cursive;
+    font-weight: bold;
+    color: black;
+}
+* {
+    font-family: 'Gamja Flower', cursive;
+}
+
+nav .nav-left a {
+    font-size: 30px;
+}
+
+nav .nav-right a {
+    font-size: 21px;
+    padding: 1rem;
+}

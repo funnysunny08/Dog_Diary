@@ -1,3 +1,32 @@
 {% extends 'base.html' %} {% block content %}
 
-{% endblock %} {% block title %} 홈화면 {% endblock %}
+<div class="home-body"></div>
+    <div class="home-middle">
+        <p>내 개</p>
+        <i id="home-middle-icon" class="fa-solid fa-paw"></i>
+        <p>니 개</p>
+    </div>
+    <div class="home-bottom">
+        <p>개 친구들의 이야기</p>
+        <div class="home-bottom-friend">
+            <div class="home-bottom-diaries">
+                <div class="home-bottom-diaries-dogName">{{post1.User.dogname}}의 일기</div>
+                <div class="home-bottom-diaries-title"><a href="/post/{{post1.id}}">{{post1.title}}</a></div>
+                <img src="{{post1.img}}" alt="asd">
+            </div>
+            <div class="home-bottom-diaries">
+                <div class="home-bottom-diaries-dogName">{{post2.User.dogname}}의 일기</div>
+                <div class="home-bottom-diaries-title"><a href="/post/{{post2.id}}">{{post2.title}}</a></div>
+                <img src="{{post2.img}}" alt="asd">
+            </div>
+            <div class="home-bottom-diaries">
+                <div class="home-bottom-diaries-dogName">{{post3.User.dogname}}의 일기</div>
+                <div class="home-bottom-diaries-title"><a href="/post/{{post3.id}}">{{post3.title}}</a></div>
+                <img src="{{post3.img}}" alt="asd">
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block title %} 내개니개 {% endblock %}

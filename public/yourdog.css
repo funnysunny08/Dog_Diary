@@ -1,0 +1,77 @@
+.yourdog-body {
+    
+}
+
+.yourdog {
+    border-bottom: solid 3px lightgray;
+    display: flex;
+    flex-direction: row;
+    height: 160px;
+
+}
+
+.yourdog-left {
+    font-weight: bold;
+    font-size: 90px;
+    padding-top: 34px;
+    padding-left: 10rem;
+}
+
+.yourdog-right {
+    font-size: 20px;
+    margin-left: 10rem;
+    padding: 1rem;
+}
+.yourdog-right div {
+    padding: 10px;
+}
+.yourdog-name {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+/* my dog 부분 */
+
+.diary {
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 3px lightgray;
+}
+
+.diary-left {
+    padding-left: 3rem;
+    margin-right: 4rem;
+}
+
+.diary-left img {
+    width: 200px;
+}
+
+.diary-right {
+    font-weight: bold;
+}
+
+.diary-time {
+    font-size: 20px;
+    padding: 15px 0;
+}
+
+.diary-content {
+    font-size: 28px;
+}
+
+#mydog-go-post {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#mydog-go-post a {
+    border: solid 3px black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: black;
+}
