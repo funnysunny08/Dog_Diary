@@ -22,7 +22,6 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
             dogAbout,
             password: hash,
         });
-        console.log(dogImg);
         return res.redirect('/');
     } catch (error) {
         console.error(error);

@@ -43,6 +43,9 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       UserId: req.user.id,
       title: req.body.title,
     });
+    if (!post) {
+      return res.status(400).json({ status: 400, message: "글 작성 실패" });
+    }
     res.redirect(`/post/${post.id}`);
   } catch (error) {
     console.error(error);
@@ -90,6 +93,9 @@ router.post('/update/:postId', isLoggedIn, upload2.none(), async (req, res, next
       createdAt: post.createdAt }, {
         where: {id: postId}
     });
+    if (!data) {
+      return res.status(400).json({ status: 400, message: "글 수정 실패" });
+    }
     res.redirect(`/post/${post.id}`);
   } catch (error) {
     console.error(error);
@@ -108,6 +114,9 @@ router.get('/:postId', async (req, res, next) => {
       if (req.user.id == post.UserId) {
         chk = true;
       }
+    }
+    if (!post) {
+      return res.status(404).json({ status: 404, message: "NOT_FOUND" });
     }
     res.render('readPost', { title: '니개', post, chk });
   } catch (error) {
