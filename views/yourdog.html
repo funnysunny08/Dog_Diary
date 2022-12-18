@@ -4,7 +4,11 @@
 
     {% for dog in dogs %}
     <div class="yourdog">
-        <div class="yourdog-left"><i class="fa-solid fa-dog"></i></div>
+        {% if dog['Posts'][0]['img'] %}
+        <div class="yourdog-left-img"><img src="{{dog['Posts'][0]['img']}}" alt=""></div>
+        {% else %}
+        <div class="yourdog-left-icon"><i class="fa-solid fa-dog"></i></div>
+        {% endif %}
         <div class="yourdog-right">
             <div class="yourdog-name"><a href="/mydog/{{dog.id}}">{{dog.dogname}}의 하루</a></div>
             <div class="yourdog-dogtype">견종: {{dog.dogtype}}</div>

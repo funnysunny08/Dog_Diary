@@ -12,10 +12,6 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/profile', (req, res) => {
-  res.render('profile', { title: '내 정보 - NodeBird' });
-});
-
 //* 로그인
 router.get('/login', isNotLoggedIn, (req, res) => {
     res.render('login', { title: '로그인' });
@@ -40,17 +36,15 @@ router.get('/', async (req, res, next) => {
     const post2 = posts[1];
     const post3 = posts[2];
 
+    if (!post1 || !post2 || !post3) {
+      return res.status(404).json({ status: 404, message: "NOT_FOUND" });
+    }
     res.render('main', {title: '홈화면', post1, post2, post3});
 
   } catch (error) {
     console.error(error);
     next(error);
   }
-});
-
-//* 마이페이지
-router.get('/mypage', isLoggedIn, async (req, res) => {
-    res.render('mypage', { title: '마이페이지' });
 });
 
 //* 내개
@@ -71,7 +65,9 @@ router.get('/mydog/:userId', async (req, res) => {
           chk = true;
         }
       }
-      
+      if (!posts) {
+        return res.status(404).json({ status: 404, message: "NOT_FOUND" });
+      }
       res.render('mydog', { title: '내 개', posts, chk });
     } catch (error) {
       console.error(error);
@@ -88,8 +84,9 @@ router.get('/yourdog', async (req, res) => {
         attributes: ['img'],
       }
     });
-
-
+    if (!dogs) {
+      return res.status(404).json({ status: 404, message: "NOT_FOUND" });
+    }
     res.render('yourdog', { title: '니개', dogs });
   } catch (err) {
     console.error(err);

@@ -10,11 +10,19 @@
 
 }
 
-.yourdog-left {
+.yourdog-left-icon {
     font-weight: bold;
     font-size: 90px;
     padding-top: 34px;
-    padding-left: 10rem;
+    padding-left: 5rem;
+}
+
+.yourdog-left-img {
+    padding-left: 1rem;
+}
+
+.yourdog-left-img img {
+    width: 200px;
 }
 
 .yourdog-right {
